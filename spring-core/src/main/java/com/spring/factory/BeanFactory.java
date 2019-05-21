@@ -1,5 +1,5 @@
 package com.spring.factory;
 
 public interface BeanFactory {
-    public  Object getObject(String  beanName);
+    public  <T> T getObject(String  beanName);
 }

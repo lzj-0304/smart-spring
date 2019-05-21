@@ -40,7 +40,7 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
         try {
             if(null !=scanClassName && scanClassName.size()>0){
                 for(String clazz:scanClassName){
-                    clazz=clazz.substring(0,clazz.lastIndexOf("."));// com.shsxt.service.UserService
+                    clazz=clazz.substring(0,clazz.lastIndexOf("."));
                     Field[] fields=Class.forName(clazz).getDeclaredFields();
                     if(null !=fields && fields.length>0){
                         for(Field field:fields){
@@ -90,7 +90,6 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
      */
     private void scanPackage(String basePackage) {
         /**
-         * com.shsxt
          * 绝对路径定位class 文件
          */
         // 传入路径
@@ -137,8 +136,8 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
     }
 
     @Override
-    public Object getObject(String param) {
-        return map.get(param);
+    public <T> T getObject(String param) {
+        return (T) map.get(param);
     }
 
 
